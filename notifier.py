@@ -8,7 +8,9 @@ FROM = "fpsps <onboarding@resend.dev>"
 
 
 def send_notification(alerts: list[dict]):
-    api_key = os.environ["RESEND_API_KEY"]
+    api_key = os.environ["RESEND_API_KEY"].strip()
+    if not api_key:
+        raise RuntimeError("RESEND_API_KEY secret is empty")
 
     airline_names = ", ".join(a["airline"] for a in alerts)
     subject = f"[fpsps] Points promotion detected: {airline_names}"
@@ -57,6 +59,7 @@ def send_notification(alerts: list[dict]):
         headers={
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
+            "User-Agent": "fpsps/1.0",
         },
     )
     try:

@@ -3,12 +3,12 @@ import os
 import urllib.error
 import urllib.request
 
-RECIPIENT = "rotautomations@gmail.com"
 FROM = "fpsps <onboarding@resend.dev>"
 
 
 def send_notification(alerts: list[dict]):
     api_key = os.environ["RESEND_API_KEY"].strip()
+    recipient = os.environ["ALERT_RECIPIENT"].strip()
     if not api_key:
         raise RuntimeError("RESEND_API_KEY secret is empty")
 
@@ -48,7 +48,7 @@ def send_notification(alerts: list[dict]):
 
     payload = json.dumps({
         "from": FROM,
-        "to": [RECIPIENT],
+        "to": [recipient],
         "subject": subject,
         "html": html_body,
     }).encode()

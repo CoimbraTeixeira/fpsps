@@ -35,6 +35,7 @@ Go to **Settings → Secrets and variables → Actions** and add:
 | Secret | Description |
 |---|---|
 | `RESEND_API_KEY` | API key from your [Resend](https://resend.com) account |
+| `ALERT_RECIPIENT` | Email address to receive promotion alerts |
 
 ### 3. Enable Actions write permissions
 

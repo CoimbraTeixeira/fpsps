@@ -1,6 +1,7 @@
 import json
 import hashlib
 import os
+import sys
 from datetime import datetime, timezone
 
 from scrapers import get_all_scrapers
@@ -69,5 +70,18 @@ def main():
         print("\nNo changes detected.", flush=True)
 
 
+def test_email():
+    print("Sending test email...", flush=True)
+    send_notification([{
+        "airline": "Test Airline",
+        "url": "https://example.com",
+        "promotions": ["This is a test notification from fpsps — email delivery is working."],
+    }])
+    print("Test email sent.", flush=True)
+
+
 if __name__ == "__main__":
-    main()
+    if "--test-email" in sys.argv:
+        test_email()
+    else:
+        main()

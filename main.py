@@ -39,10 +39,6 @@ def main():
             prev = state.get(scraper.name, {})
             prev_hash = prev.get("hash")
 
-            if result.get("content") == "skipped:no_api_key":
-                print(f"  Skipped (no API key)", flush=True)
-                continue
-
             if prev_hash is None:
                 print(f"  First run — recording baseline", flush=True)
             elif prev_hash != new_hash:

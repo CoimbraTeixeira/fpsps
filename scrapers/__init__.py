@@ -5,7 +5,6 @@ from .flying_blue import FlyingBlueScraper
 from .turkish import TurkishScraper
 from .lufthansa import LufthansaScraper
 from .aer_lingus import AerLingusScraper
-from .seats_aero import SeatsAeroScraper
 
 
 def get_all_scrapers():
@@ -17,5 +16,4 @@ def get_all_scrapers():
         TurkishScraper(),
         LufthansaScraper(),
         AerLingusScraper(),
-        SeatsAeroScraper(),
     ]

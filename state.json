@@ -1,1 +1,37 @@
-{}
+{
+  "TAP Miles&Go": {
+    "promo_hash": "3f7437051fc4bcfc",
+    "last_checked": "2026-04-22T21:32:49.330969+00:00",
+    "promotions": [
+      "Fares Promotions and Campaigns Flight and train Ponte A\u00e9rea",
+      "Club TAP Miles&Go Promotions and Offers Help center Frequently asked questions",
+      "Do you have Bonus Miles that are about to expire? Extend their validity for three more annual qualification periods! Extend miles",
+      "Did you know that you can transfer your miles to another TAP Miles&Go Account through the Miles Store? Transfer miles",
+      "Convert miles Miles Store Terms and Conditions General considerations Buy miles",
+      "Transfer miles to another Customer Convert Bonus Miles to Status Miles Want to accumulate miles faster? Club TAP Miles&Go",
+      "This contact form is exclusive for purchasing miles at Miles Store. For other subject, please contact us through the designated TAP service channels. TAP respects your privacy. To learn more, see: privacy policies Other websites"
+    ]
+  },
+  "Iberia Plus": {
+    "promo_hash": "4f53cda18c2baa0c",
+    "last_checked": "2026-04-22T21:32:53.327762+00:00",
+    "promotions": []
+  },
+  "British Airways Executive Club": {
+    "promo_hash": "8c979ee95b21226d",
+    "last_checked": "2026-04-22T21:33:25.014828+00:00",
+    "promotions": [
+      "Find your next adventure Book using a voucher or promotional code Manage your trip options"
+    ]
+  },
+  "Lufthansa Miles & More": {
+    "promo_hash": "4f53cda18c2baa0c",
+    "last_checked": "2026-04-22T21:34:09.313685+00:00",
+    "promotions": []
+  },
+  "Aer Lingus AerClub": {
+    "promo_hash": "4f53cda18c2baa0c",
+    "last_checked": "2026-04-22T21:34:13.811452+00:00",
+    "promotions": []
+  }
+}

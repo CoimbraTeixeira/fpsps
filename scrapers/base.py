@@ -4,10 +4,17 @@ import urllib.request
 from abc import ABC
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout, Error as PlaywrightError
 
+# Patterns specific to miles/points purchase promotions
 PROMO_KEYWORDS = [
-    "bonus", "promotion", "promo", "special offer", "limited time",
-    "% off", "% bonus", "discount", "sale", "extra miles", "buy miles",
-    "purchase miles", "earn more", "miles sale", "points sale",
+    "buy miles", "purchase miles", "buy points", "purchase points",
+    "miles sale", "points sale", "miles store",
+    "bonus miles", "bonus points",
+    "% bonus", "% extra", "% off",
+    "double miles", "triple miles",
+    "limited time", "special offer", "promotion", "promo",
+    "discount on miles", "discount on points",
+    "miles promotion", "points promotion",
+    "earn more miles", "earn extra miles",
 ]
 
 _UA = (

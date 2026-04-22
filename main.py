@@ -23,8 +23,8 @@ def save_state(state: dict):
         f.write("\n")
 
 
-def content_hash(text: str) -> str:
-    return hashlib.sha256(text.encode()).hexdigest()[:16]
+def promo_hash(promotions: list[str]) -> str:
+    return hashlib.sha256(json.dumps(sorted(promotions)).encode()).hexdigest()[:16]
 
 
 def main():
@@ -35,27 +35,30 @@ def main():
         print(f"Checking {scraper.name}...", flush=True)
         try:
             result = scraper.scrape()
-            new_hash = content_hash(result["content"])
+            promotions = result["promotions"]
+            new_hash = promo_hash(promotions)
 
             prev = state.get(scraper.name, {})
-            prev_hash = prev.get("hash")
+            prev_hash = prev.get("promo_hash")
 
             if prev_hash is None:
-                print(f"  First run — recording baseline", flush=True)
-            elif prev_hash != new_hash:
-                print(f"  CHANGE DETECTED", flush=True)
+                print(f"  First run — baseline: {len(promotions)} promotion(s) found", flush=True)
+            elif new_hash != prev_hash and promotions:
+                print(f"  NEW PROMOTION(S) DETECTED: {len(promotions)}", flush=True)
                 alerts.append({
                     "airline": scraper.name,
                     "url": scraper.url,
-                    "promotions": result["promotions"],
+                    "promotions": promotions,
                 })
+            elif new_hash != prev_hash:
+                print(f"  Page changed but no promotions detected — skipping", flush=True)
             else:
-                print(f"  No change", flush=True)
+                print(f"  No new promotions", flush=True)
 
             state[scraper.name] = {
-                "hash": new_hash,
+                "promo_hash": new_hash,
                 "last_checked": datetime.now(timezone.utc).isoformat(),
-                "promotions": result["promotions"],
+                "promotions": promotions,
             }
 
         except Exception as exc:
@@ -67,7 +70,7 @@ def main():
         send_notification(alerts)
         print(f"\nAlert sent for: {', '.join(a['airline'] for a in alerts)}", flush=True)
     else:
-        print("\nNo changes detected.", flush=True)
+        print("\nNo new promotions detected.", flush=True)
 
 
 def test_email():

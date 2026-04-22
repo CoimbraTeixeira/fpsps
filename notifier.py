@@ -1,5 +1,6 @@
 import json
 import os
+import urllib.error
 import urllib.request
 
 RECIPIENT = "rot@pobox.com"
@@ -58,6 +59,10 @@ def send_notification(alerts: list[dict]):
             "Content-Type": "application/json",
         },
     )
-    with urllib.request.urlopen(req, timeout=15) as resp:
-        result = json.loads(resp.read())
-        print(f"  Email sent, id={result.get('id')}", flush=True)
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            result = json.loads(resp.read())
+            print(f"  Email sent, id={result.get('id')}", flush=True)
+    except urllib.error.HTTPError as e:
+        body = e.read().decode()
+        raise RuntimeError(f"Resend API error {e.code}: {body}") from e

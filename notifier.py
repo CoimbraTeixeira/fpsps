@@ -3,7 +3,7 @@ import os
 import urllib.error
 import urllib.request
 
-RECIPIENT = "rot@pobox.com"
+RECIPIENT = "rotautomations@gmail.com"
 FROM = "fpsps <onboarding@resend.dev>"
 
 

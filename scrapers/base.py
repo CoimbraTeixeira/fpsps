@@ -1,5 +1,5 @@
 from abc import ABC
-from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
+from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout, Error as PlaywrightError
 
 PROMO_KEYWORDS = [
     "bonus", "promotion", "promo", "special offer", "limited time",
@@ -14,7 +14,13 @@ class BaseScraper(ABC):
 
     def scrape(self) -> dict:
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
+            browser = p.chromium.launch(
+                headless=True,
+                args=[
+                    "--no-sandbox",
+                    "--disable-blink-features=AutomationControlled",
+                ],
+            )
             context = browser.new_context(
                 user_agent=(
                     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -22,13 +28,16 @@ class BaseScraper(ABC):
                     "Chrome/124.0.0.0 Safari/537.36"
                 ),
                 locale="en-GB",
+                viewport={"width": 1280, "height": 800},
+                timezone_id="Europe/London",
             )
             page = context.new_page()
+            # hide the webdriver flag that sites use to detect automation
+            page.add_init_script(
+                "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+            )
             try:
-                try:
-                    page.goto(self.url, wait_until="networkidle", timeout=30000)
-                except PlaywrightTimeout:
-                    page.goto(self.url, wait_until="domcontentloaded", timeout=30000)
+                self._goto(page, self.url)
                 self._wait_for_content(page)
                 text = self._extract_text(page)
             finally:
@@ -38,6 +47,12 @@ class BaseScraper(ABC):
             "content": text,
             "promotions": self._find_promotions(text),
         }
+
+    def _goto(self, page, url: str):
+        try:
+            page.goto(url, wait_until="networkidle", timeout=30000)
+        except (PlaywrightTimeout, PlaywrightError):
+            page.goto(url, wait_until="domcontentloaded", timeout=30000)
 
     def _wait_for_content(self, page):
         pass
@@ -58,7 +73,6 @@ class BaseScraper(ABC):
                 block = " ".join(l.strip() for l in lines[start:end] if l.strip())
                 if block:
                     found.append(block[:400])
-        # deduplicate while preserving order, limit to 10
         seen = set()
         result = []
         for item in found:

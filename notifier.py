@@ -1,14 +1,13 @@
+import json
 import os
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+import urllib.request
 
 RECIPIENT = "rot@pobox.com"
+FROM = "fpsps <onboarding@resend.dev>"
 
 
 def send_notification(alerts: list[dict]):
-    gmail_user = os.environ["GMAIL_USER"]
-    gmail_password = os.environ["GMAIL_APP_PASSWORD"]
+    api_key = os.environ["RESEND_API_KEY"]
 
     airline_names = ", ".join(a["airline"] for a in alerts)
     subject = f"[fpsps] Points promotion detected: {airline_names}"
@@ -44,12 +43,21 @@ def send_notification(alerts: list[dict]):
     </body></html>
     """
 
-    msg = MIMEMultipart("alternative")
-    msg["Subject"] = subject
-    msg["From"] = gmail_user
-    msg["To"] = RECIPIENT
-    msg.attach(MIMEText(html_body, "html"))
+    payload = json.dumps({
+        "from": FROM,
+        "to": [RECIPIENT],
+        "subject": subject,
+        "html": html_body,
+    }).encode()
 
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
-        smtp.login(gmail_user, gmail_password)
-        smtp.sendmail(gmail_user, RECIPIENT, msg.as_string())
+    req = urllib.request.Request(
+        "https://api.resend.com/emails",
+        data=payload,
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+        },
+    )
+    with urllib.request.urlopen(req, timeout=15) as resp:
+        result = json.loads(resp.read())
+        print(f"  Email sent, id={result.get('id')}", flush=True)

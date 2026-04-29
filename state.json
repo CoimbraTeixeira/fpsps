@@ -1,37 +1,40 @@
 {
   "TAP Miles&Go": {
-    "promo_hash": "3f7437051fc4bcfc",
-    "last_checked": "2026-04-29T06:54:52.801537+00:00",
+    "promo_hash": "591adfe4624ac29d",
+    "last_checked": "2026-04-29T12:38:00.114050+00:00",
     "promotions": [
       "Fares Promotions and Campaigns Flight and train Ponte A\u00e9rea",
       "Club TAP Miles&Go Promotions and Offers Help center Frequently asked questions",
       "Do you have Bonus Miles that are about to expire? Extend their validity for three more annual qualification periods! Extend miles",
       "Did you know that you can transfer your miles to another TAP Miles&Go Account through the Miles Store? Transfer miles",
-      "Convert miles Miles Store Terms and Conditions General considerations Buy miles",
-      "Transfer miles to another Customer Convert Bonus Miles to Status Miles Want to accumulate miles faster? Club TAP Miles&Go",
-      "This contact form is exclusive for purchasing miles at Miles Store. For other subject, please contact us through the designated TAP service channels. TAP respects your privacy. To learn more, see: privacy policies Other websites"
+      "At the Miles Store, you can purchase the miles you need to reach your goals more quickly. From 70 EUR for 2.000 miles, choose the option that best suits your needs and complete your purchase in the Customer Area:",
+      "Extend miles Log in to your TAP Miles&Go Account to access the Miles Store (Customer Area); In the \"Extend miles\" tab, you will find all the information about the validity of your miles; Extend your miles for up to three annual qualification periods: select one or more blocks of 2.000 miles, fill in your details and make the payment.",
+      "The validity extension of Bonus Miles is carried out in blocks of 2.000 Bonus Miles and can only be done before their expiry date. This operation has an associated fee, which must be paid by the Customer using a Credit Card, and is non-refundable. Transfer miles",
+      "Transfer miles Log in to your TAP Miles&Go Account to access the Miles Store (Customer Area); In the \"Transfer miles\" tab, choose an amount between 2.000 and 20.000 miles to transfer to another TAP Miles&Go Account; Enter your details and the Customer Number (TP) to which the miles are to be sent and make the payment to complete the transaction.",
+      "The transfer of Bonus Miles is carried out in blocks of 2.000 Bonus Miles. The minimum amount of miles you can transfer is 2.000 and the maximum transfer limit per annual earning period of Status Miles is 20.000 miles. The transfer of miles is only allowed between TAP Miles&Go Customers and has an associated fee, which the Customer must pay via Credit Card. Once transferred, miles and the associat",
+      "Convert miles Log in to your TAP Miles&Go Account to access the Miles Store (Customer Area); Check the \"Convert Miles\" tab to see if you are eligible to convert miles; Select one or more blocks of 2.000 Bonus Miles to convert, fill in your details and make the payment to complete the conversion."
     ]
   },
   "Iberia Plus": {
     "promo_hash": "4f53cda18c2baa0c",
-    "last_checked": "2026-04-29T06:54:57.214490+00:00",
+    "last_checked": "2026-04-29T12:38:03.775086+00:00",
     "promotions": []
   },
   "British Airways Executive Club": {
     "promo_hash": "8c979ee95b21226d",
-    "last_checked": "2026-04-29T06:55:28.697666+00:00",
+    "last_checked": "2026-04-29T12:38:35.021804+00:00",
     "promotions": [
       "Find your next adventure Book using a voucher or promotional code Manage your trip options"
     ]
   },
   "Lufthansa Miles & More": {
     "promo_hash": "4f53cda18c2baa0c",
-    "last_checked": "2026-04-29T06:56:13.231527+00:00",
+    "last_checked": "2026-04-29T12:39:19.019695+00:00",
     "promotions": []
   },
   "Aer Lingus AerClub": {
     "promo_hash": "4f53cda18c2baa0c",
-    "last_checked": "2026-04-29T06:56:17.155745+00:00",
+    "last_checked": "2026-04-29T12:39:23.226707+00:00",
     "promotions": []
   }
 }

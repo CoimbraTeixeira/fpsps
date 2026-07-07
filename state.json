@@ -1,7 +1,7 @@
 {
   "TAP Miles&Go": {
     "promo_hash": "591adfe4624ac29d",
-    "last_checked": "2026-07-07T02:58:27.475757+00:00",
+    "last_checked": "2026-07-07T09:38:51.415420+00:00",
     "promotions": [
       "Fares Promotions and Campaigns Flight and train Ponte A\u00e9rea",
       "Club TAP Miles&Go Promotions and Offers Help center Frequently asked questions",
@@ -17,24 +17,24 @@
   },
   "Iberia Plus": {
     "promo_hash": "4f53cda18c2baa0c",
-    "last_checked": "2026-07-07T02:58:31.838047+00:00",
+    "last_checked": "2026-07-07T09:38:56.406528+00:00",
     "promotions": []
   },
   "British Airways Executive Club": {
     "promo_hash": "8c979ee95b21226d",
-    "last_checked": "2026-07-07T02:59:03.460818+00:00",
+    "last_checked": "2026-07-07T09:39:28.069152+00:00",
     "promotions": [
       "Find your next adventure Book using a voucher or promotional code Manage your trip options"
     ]
   },
   "Lufthansa Miles & More": {
     "promo_hash": "4f53cda18c2baa0c",
-    "last_checked": "2026-07-07T02:59:48.273744+00:00",
+    "last_checked": "2026-07-07T09:40:40.233539+00:00",
     "promotions": []
   },
   "Aer Lingus AerClub": {
     "promo_hash": "4f53cda18c2baa0c",
-    "last_checked": "2026-07-07T02:59:52.714486+00:00",
+    "last_checked": "2026-07-07T09:40:44.667462+00:00",
     "promotions": []
   }
 }
